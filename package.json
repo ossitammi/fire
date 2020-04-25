@@ -1,0 +1,51 @@
+{
+  "name": "fire",
+  "version": "1.0.0",
+  "description": "Application to forecast when the retirement finally starts",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "jest --config ./jest.config.json",
+    "test:watch": "npm run test -- --watch",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:ossitammi/fire.git"
+  },
+  "keywords": [
+    "react",
+    "fire",
+    "stocks"
+  ],
+  "author": "Ossi Tammi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ossitammi/fire/issues"
+  },
+  "homepage": "https://github.com/ossitammi/fire.git#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-react": "^7.19.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^4.0.2",
+    "inline-source-map": "^0.6.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.9",
+    "@material-ui/styles": "^4.9.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
