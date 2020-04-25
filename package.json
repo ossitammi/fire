@@ -46,6 +46,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.9",
     "@material-ui/styles": "^4.9.6",
+    "@nivo/waffle": "^0.61.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
