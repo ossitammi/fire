@@ -4,6 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import FireInputs from '@src/components/fire-inputs/FireInputs';
 import FireChart from '@src/components/fire-chart/FireChart';
+import fireCalculations from '@src/components/fire-calc/fireCalculations';
+
+const years = [0, 1, 2, 3, 4, 5];
+
+years.map(year => {
+  console.log(fireCalculations(15000, 5, 30, 500, year));
+});
 
 const applicationTheme = theme();
 
