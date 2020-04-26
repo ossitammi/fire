@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ResponsiveWaffle } from '@nivo/waffle';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,10 +14,10 @@ const useStyles = makeStyles({
   }
 });
 
-const FireChart = () => {
+const FireChart = (props) => {
   const classes = useStyles();
 
-  const [data] = useState(
+  const [data, setData] = useState(
     {
       "id": "money",
       "label": "Days of ours",
@@ -25,6 +25,10 @@ const FireChart = () => {
       "color": "#468df3"
     }
   );
+
+  useEffect(() => {
+    setData({ ...data, ['value']: props.daysInHammoc});
+  }, [props.daysInHammoc]);
 
   const Waffle = ({ data }) => (
     <ResponsiveWaffle
@@ -66,6 +70,11 @@ const FireChart = () => {
       <Waffle data={data}/>
     </div>
   )
+};
+
+FireChart.propTypes = {
+  capital: PropTypes.number,
+  daysInHammoc: PropTypes.number
 };
 
 export default FireChart;

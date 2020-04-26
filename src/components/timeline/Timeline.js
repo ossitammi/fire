@@ -44,10 +44,10 @@ const Timeline = (props) => {
         classes={{ root: classes.slider }}
         onChange={handleTimeSlide}
         orientation="vertical"
-        defaultValue={0}
         step={1}
         marks={marks}
         max={40}
+        value={props.year}
         valueLabelDisplay='on'
         valueLabelFormat={(value) => value + 2020}/>
     </div>
@@ -55,7 +55,8 @@ const Timeline = (props) => {
 };
 
 Timeline.propTypes = {
-  setYear: PropTypes.func
+  setYear: PropTypes.func,
+  year: PropTypes.number
 };
 
 export default Timeline;

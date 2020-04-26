@@ -9,7 +9,7 @@ const yieldCalc = (capital, yieldRate, taxRate) => {
 const capitalOfYear = (startCapital, year, monthlyInvestment, yieldRate, taxRate) => {
   /** At the beginning, capital equals startCapital */
   if (year === 0) {
-    return { capital: startCapital, yield: 0 };
+    return { capital: startCapital, yield: yieldCalc(startCapital, yieldRate, taxRate) };
   }
 
   /**
@@ -19,9 +19,10 @@ const capitalOfYear = (startCapital, year, monthlyInvestment, yieldRate, taxRate
   const lastYearsCapital = capitalOfYear(startCapital, year - 1, monthlyInvestment, yieldRate, taxRate).capital;
   const lastYearsYield = yieldCalc(lastYearsCapital, yieldRate, taxRate);
   const currentCapital = lastYearsCapital + monthlyInvestment * 12 + lastYearsYield;
-  return { capital: currentCapital, yield: lastYearsYield };
+  const yieldForecast = yieldCalc(currentCapital, yieldRate, taxRate);
+  return { capital: currentCapital, yield: yieldForecast };
 };
 
-const daysInHammoc = (dailyExpences, investmentsYield) => (investmentsYield / dailyExpences);
+const yieldPaidDays = (dailyExpences, investmentsYield) => (investmentsYield / dailyExpences);
 
-export { daysInHammoc, fireCalculations};
+export { yieldPaidDays, fireCalculations};

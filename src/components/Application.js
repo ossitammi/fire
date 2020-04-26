@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import FireInputs from '@src/components/fire-inputs/FireInputs';
 import FireChart from '@src/components/fire-chart/FireChart';
 import Timeline from '@src/components/timeline/Timeline';
-import { daysInHammoc, fireCalculations } from '@src/components/fire-calc/fireCalculations';
+import { yieldPaidDays, fireCalculations } from '@src/components/fire-calc/fireCalculations';
 
 const applicationTheme = theme();
 
@@ -29,26 +29,42 @@ const useStyles = makeStyles({
 const Application = () => {
   const classes = useStyles();
 
+  const [daysInHammoc, setDaysInHammoc] = useState(0);
   const [year, setYear] = useState(0);
+  const [fireInputs, setFireInputs] = useState({ capital: 15000, savings: 500, tax: 30, yield: 5 });
+  const [capital, setCapital] = useState(fireInputs.capital);
 
   useEffect(() => {
-    const investmentStatus = fireCalculations(15000, 5, 30, 500, year);
-    console.log(investmentStatus.capital);
-    console.log(daysInHammoc(57, investmentStatus.yield));
-  }, [year]);
+    if (fireInputs) {
+      const investmentStatus = fireCalculations(
+        fireInputs.capital,
+        fireInputs.yield,
+        fireInputs.tax,
+        fireInputs.savings,
+        year
+      );
 
-  const handleFireInputs = (inputs) => {
-    console.log(inputs);
-  };
+      setCapital(investmentStatus.capital);
+      setDaysInHammoc(yieldPaidDays(57, investmentStatus.yield));
+    }
+  }, [year, fireInputs]);
 
   return (
     <ThemeProvider theme={applicationTheme}>
       <div className={classes.applicationBase}>
+        <h1> Current amount of monneeyy {new Intl.NumberFormat('fi-FI', { style: 'currency', currency: 'EUR' }).format(capital)} </h1>
         <div className={classes.applicationRow}>
-          <FireChart/>
-          <Timeline setYear={setYear}/>
+          <FireChart
+            capital={capital}
+            daysInHammoc={daysInHammoc}
+          />
+          <Timeline
+            setYear={setYear}
+            year={year}/>
         </div>
-        <FireInputs setInputs={handleFireInputs}/>
+        <FireInputs
+          inputs={fireInputs}
+          setInputs={setFireInputs}/>
       </div>
     </ThemeProvider>
   );
