@@ -30,9 +30,6 @@ const Application = () => {
   return (
     <ThemeProvider theme={applicationTheme}>
       <div className={classes.applicationBase}>
-        {/*
-          <Timeline></Timeline>
-        */}
         <FireChart></FireChart>
         <FireInputs setInputs={handleFireInputs}/>
       </div>
