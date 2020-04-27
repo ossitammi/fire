@@ -59,6 +59,14 @@ const FireInputs = (props) => {
         variant="outlined"
         value={props.inputs.tax}>
       </TextField>
+      <TextField
+        onChange={handleChange('expenses')}
+        className={classes.inputField}
+        helperText="The amount of your daily expenses, including food, rent etc."
+        label="Daily expenses €"
+        variant="outlined"
+        value={props.inputs.expenses}>
+      </TextField>
     </div>
   );
 };

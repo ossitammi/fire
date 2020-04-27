@@ -33,11 +33,12 @@ const Application = () => {
 
   const [daysInHammoc, setDaysInHammoc] = useState(0);
   const [year, setYear] = useState(0);
-  const [fireInputs, setFireInputs] = useState({ capital: 15000, savings: 500, tax: 30, yield: 5 });
+  const [fireInputs, setFireInputs] = useState({ capital: 15000, savings: 500, tax: 30, yield: 5, expenses: 60 });
   const [capital, setCapital] = useState(fireInputs.capital);
 
   useEffect(() => {
     if (fireInputs) {
+      console.log(fireInputs);
       const investmentStatus = fireCalculations(
         fireInputs.capital,
         fireInputs.yield,
@@ -47,7 +48,7 @@ const Application = () => {
       );
 
       setCapital(investmentStatus.capital);
-      setDaysInHammoc(yieldPaidDays(57, investmentStatus.yield));
+      setDaysInHammoc(yieldPaidDays(fireInputs.expenses, investmentStatus.yield));
     }
   }, [year, fireInputs]);
 

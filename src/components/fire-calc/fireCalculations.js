@@ -23,6 +23,8 @@ const capitalOfYear = (startCapital, year, monthlyInvestment, yieldRate, taxRate
   return { capital: currentCapital, yield: yieldForecast };
 };
 
-const yieldPaidDays = (dailyExpences, investmentsYield) => (investmentsYield / dailyExpences);
+const yieldPaidDays = (dailyExpences, investmentsYield) => {
+  return dailyExpences ? (investmentsYield / dailyExpences) : 1000;
+};
 
 export { yieldPaidDays, fireCalculations};
