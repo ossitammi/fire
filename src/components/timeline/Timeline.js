@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   slider: {
+    height: '300px !important'
   }
 });
 
@@ -35,7 +36,7 @@ const Timeline = (props) => {
   const classes = useStyles();
 
   const handleTimeSlide = (event, value) => {
-    if (event.timeStamp % 10 < 1) props.setYear(value);
+    props.setYear(value);
   };
 
   return (

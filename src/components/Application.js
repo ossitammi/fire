@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { theme } from '@src/themes/theme';
 import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
 import FireInputs from '@src/components/fire-inputs/FireInputs';
 import FireChart from '@src/components/fire-chart/FireChart';
 import Timeline from '@src/components/timeline/Timeline';
@@ -21,7 +22,8 @@ const useStyles = makeStyles({
   applicationRow: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 
@@ -52,7 +54,10 @@ const Application = () => {
   return (
     <ThemeProvider theme={applicationTheme}>
       <div className={classes.applicationBase}>
-        <h1> Current amount of monneeyy {new Intl.NumberFormat('fi-FI', { style: 'currency', currency: 'EUR' }).format(capital)} </h1>
+        <Typography variant='h5'> Value of investments: </Typography>
+          <Typography>
+            {new Intl.NumberFormat('fi-FI', { style: 'currency', currency: 'EUR' }).format(capital)}
+          </Typography>
         <div className={classes.applicationRow}>
           <FireChart
             capital={capital}
